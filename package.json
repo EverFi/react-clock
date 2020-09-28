@@ -8,6 +8,7 @@
   "scripts": {
     "build": "yarn build-js && yarn copy-styles && yarn build-styles",
     "build-js": "babel src -d dist --ignore **/__tests__,**/**/__tests__",
+    "watch-js": "babel -s -w src -d dist --ignore **/__tests__,**/**/__tests__",
     "build-styles": "lessc ./dist/Clock.less ./dist/Clock.css",
     "clean": "rimraf dist",
     "copy-styles": "node ./copy-styles.js",
@@ -50,7 +51,7 @@
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.0",
+    "@babel/cli": "^7.10.0",
     "@babel/core": "^7.5.0",
     "@babel/plugin-proposal-class-properties": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
