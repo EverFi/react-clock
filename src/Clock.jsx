@@ -21,6 +21,7 @@ import {
 
 export default function Clock({
   className,
+  displayNumbersOutside,
   hourHandLength,
   hourHandOppositeLength,
   hourHandWidth,
@@ -31,6 +32,7 @@ export default function Clock({
   minuteHandWidth,
   minuteMarksLength,
   minuteMarksWidth,
+  numberSelect,
   renderHourMarks,
   renderMinuteHand,
   renderMinuteMarks,
@@ -42,6 +44,12 @@ export default function Clock({
   size,
   value,
 }) {
+  function hourMarkClickFn(event) {
+    if (numberSelect) {
+      numberSelect(event.target.textContent);
+    }
+  }
+
   function renderMinuteMarksFn() {
     if (!renderMinuteMarks) {
       return null;
@@ -73,13 +81,22 @@ export default function Clock({
 
     const hourMarks = [];
     for (let i = 1; i <= 12; i += 1) {
+      let number;
+      if (renderNumbers === 'minutes') {
+        number = i * 5;
+        number = number === 60 ? '00' : number;
+      } else if (renderNumbers) {
+        number = i;
+      }
       hourMarks.push(
         <Mark
           key={`hour_${i}`}
           angle={i * 30}
+          displayOutside={displayNumbersOutside}
           length={hourMarksLength}
           name="hour"
-          number={renderNumbers ? i : null}
+          number={number}
+          onClick={hourMarkClickFn}
           width={hourMarksWidth}
         />,
       );
@@ -197,6 +214,7 @@ Clock.propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]),
+  displayNumbersOutside: PropTypes.bool,
   hourHandLength: isHandLength,
   hourHandOppositeLength: isOppositeHandLength,
   hourHandWidth: isHandWidth,
@@ -207,6 +225,7 @@ Clock.propTypes = {
   minuteHandWidth: isHandWidth,
   minuteMarksLength: isMarkLength,
   minuteMarksWidth: isMarkWidth,
+  numberSelect: PropTypes.func,
   renderHourMarks: PropTypes.bool,
   renderMinuteHand: PropTypes.bool,
   renderMinuteMarks: PropTypes.bool,
