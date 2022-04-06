@@ -30,6 +30,18 @@ references:
         yarn
         yarn build
 
+  check_version_tag: &check_version_tag
+    run:
+      name: Check if Version is Tagged
+      command: |
+        DEPLOY_VERSION=$(npm -s run env echo '$npm_package_version')
+        if [ $(git tag -l "$DEPLOY_VERSION") ]; then
+          echo "Package version $DEPLOY_VERSION has already been tagged, will not redeploy"
+          exit 1
+        else
+          fury yank react-clock -v $DEPLOY_VERSION --api-token=$GEMFURY_API_TOKEN || echo "$DEPLOY_VERSION not on gemfury"
+        fi
+
   yank_version: &yank_version
     run:
       name: Yank Version
@@ -41,8 +53,14 @@ references:
     run:
       name: Deploy Version
       command: |
-        DEPLOY_FILE=$(npm pack | tail -n 1)
-        fury push $DEPLOY_FILE --api-token=$GEMFURY_API_TOKEN
+        DEPLOY_VERSION=$(npm -s run env echo '$npm_package_version')
+        if [ "$CIRCLE_TAG" = "$DEPLOY_VERSION" ] || [ "$CIRCLE_TAG" = "" ]; then
+          DEPLOY_FILE=$(npm pack | tail -n 1)
+          fury push $DEPLOY_FILE --api-token=$GEMFURY_API_TOKEN
+        else
+          echo "Package version $DEPLOY_VERSION does not match git tag $CIRCLE_TAG"
+          exit 1
+        fi
 
 
 version: 2.1
@@ -56,6 +74,7 @@ jobs:
       - checkout
       - *restore_cache
       - *install_build
+      - *check_version_tag
       - *yank_version
       - *deploy_version
       - *save_cache
