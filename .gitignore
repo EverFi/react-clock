@@ -2,6 +2,7 @@
 .idea
 .vscode
 .DS_STORE
+dist
 coverage
 node_modules
 npm-debug.log
