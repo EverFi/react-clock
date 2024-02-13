@@ -1054,6 +1054,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@everfi/react-clock@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@everfi/react-clock@workspace:."
+  dependencies:
+    "@babel/cli": ^7.10.0
+    "@babel/core": ^7.5.0
+    "@babel/plugin-proposal-class-properties": ^7.5.0
+    "@babel/preset-env": ^7.5.0
+    "@babel/preset-react": ^7.0.0
+    babel-eslint: ^10.0.0
+    babel-jest: ^24.0.0
+    enzyme: ^3.10.0
+    enzyme-adapter-react-16: ^1.14.0
+    eslint: ^5.16.0
+    eslint-config-airbnb: ^17.1.0
+    eslint-plugin-import: ^2.18.0
+    eslint-plugin-jsx-a11y: ^6.2.1
+    eslint-plugin-react: ^7.14.2
+    jest: ^24.8.0
+    less: ^3.8.1
+    merge-class-names: ^1.1.1
+    prop-types: ^15.6.0
+    react: ^16.7.0
+    react-dom: ^16.7.0
+    react-test-renderer: ^16.7.0
+    rimraf: ^2.6.2
+  peerDependencies:
+    react: ">=15.5"
+    react-dom: ">=15.5"
+  languageName: unknown
+  linkType: soft
+
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
   resolution: "@isaacs/cliui@npm:8.0.2"
@@ -6488,38 +6520,6 @@ __metadata:
   checksum: 2e26e052f8be2abd64e6d1dabfbd7be03f80ec18ccbc49562d31f617d0015fbdbcf0f9eed30346ea6ab789e0fdfe4337f033f8016efdbee0df5354751842080e
   languageName: node
   linkType: hard
-
-"react-clock@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "react-clock@workspace:."
-  dependencies:
-    "@babel/cli": ^7.10.0
-    "@babel/core": ^7.5.0
-    "@babel/plugin-proposal-class-properties": ^7.5.0
-    "@babel/preset-env": ^7.5.0
-    "@babel/preset-react": ^7.0.0
-    babel-eslint: ^10.0.0
-    babel-jest: ^24.0.0
-    enzyme: ^3.10.0
-    enzyme-adapter-react-16: ^1.14.0
-    eslint: ^5.16.0
-    eslint-config-airbnb: ^17.1.0
-    eslint-plugin-import: ^2.18.0
-    eslint-plugin-jsx-a11y: ^6.2.1
-    eslint-plugin-react: ^7.14.2
-    jest: ^24.8.0
-    less: ^3.8.1
-    merge-class-names: ^1.1.1
-    prop-types: ^15.6.0
-    react: ^16.7.0
-    react-dom: ^16.7.0
-    react-test-renderer: ^16.7.0
-    rimraf: ^2.6.2
-  peerDependencies:
-    react: ">=15.5"
-    react-dom: ">=15.5"
-  languageName: unknown
-  linkType: soft
 
 "react-dom@npm:^16.7.0":
   version: 16.8.6

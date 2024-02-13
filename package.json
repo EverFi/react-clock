@@ -1,5 +1,5 @@
 {
-  "name": "react-clock",
+  "name": "@everfi/react-clock",
   "version": "2.6.0-develop",
   "description": "An analog clock for your React app.",
   "main": "dist/entry.js",
@@ -7,7 +7,7 @@
   "types": "./index.d.ts",
   "scripts": {
     "build": "yarn build-js && yarn copy-styles && yarn build-styles",
-    "build-js": "babel src -d dist --ignore **/__tests__,**/**/__tests__",
+    "build-js": "babel src -d dist --ignore src/__tests__,src/shared/__tests__",
     "watch-js": "babel -s -w src -d dist --ignore **/__tests__,**/**/__tests__",
     "build-styles": "lessc ./dist/Clock.less ./dist/Clock.css",
     "clean": "rimraf dist",
@@ -85,7 +85,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/wojtekmaj/react-clock.git"
+    "url": "git+https://github.com/EverFi/react-clock.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "packageManager": "yarn@3.6.1"
 }
